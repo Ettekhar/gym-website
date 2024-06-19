@@ -20,5 +20,9 @@
   "main": "server.js",
   "author": "Ettekhar Taion",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ettekhar/GYM-Website-Updated.git"
+  }
 }
