@@ -26,6 +26,7 @@ router.post('/', async (req, res) => {
 // Update admin
 router.put('/:username', async (req, res) => {
     const { pass_key, securekey, Full_name } = req.body;
+    console.log(req.params.username,pass_key,securekey,Full_name)
     try {
         const result = await UpdateAdmin(req.params.username, pass_key, securekey, Full_name);
         res.json(result);

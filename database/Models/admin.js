@@ -43,6 +43,7 @@ async function createAdmin(username,pass_key,securekey,Full_name) {
 
 //Update Admin
 async function UpdateAdmin(username,pass_key,securekey,Full_name) {
+    console.log({username,pass_key,securekey,Full_name})
     try {
         const [result] = await pool.query(`
             UPDATE admin
