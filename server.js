@@ -26,6 +26,8 @@ app.use('/admin',adminRoute)
 app.use('/api',apiRoute);
 app.use('/search',searchRoute)
 
+app.use(express.static(__dirname));
+
 app.use((err,req,res,next) => {
     console.log(err.stack);
     res.status(500).send('server error!!!');
@@ -35,6 +37,12 @@ app.all('*',(req,res) => {
     res.status(404).send('<h1>Page Not Found</h1>')
 })
 
-app.listen(process.env.PORT,(err) => {
-    console.log("Server is listening at port: "+process.env.PORT);
-})
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+    const PORT = process.env.PORT || 8080;
+    app.listen(PORT, (err) => {
+        if (err) console.error(err);
+        console.log("Server is listening at port: " + PORT);
+    });
+}
+
+module.exports = app;
