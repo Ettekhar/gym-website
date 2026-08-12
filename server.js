@@ -15,6 +15,8 @@ const adminRoute = require('./database/Router/adminRoute.js')
 const apiRoute = require('./database/Router/apiRoutes.js')
 const searchRoute = require('./database/Router/searchRoute.js')
 
+const path = require('path');
+
 app.use(express.json());
 
 app.use('/address',addressRoute);
@@ -27,6 +29,10 @@ app.use('/api',apiRoute);
 app.use('/search',searchRoute)
 
 app.use(express.static(__dirname));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'final.html'));
+});
 
 app.use((err,req,res,next) => {
     console.log(err.stack);
