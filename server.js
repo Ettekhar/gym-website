@@ -43,7 +43,7 @@ app.all('*',(req,res) => {
     res.status(404).send('<h1>Page Not Found</h1>')
 })
 
-if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+if (require.main === module) {
     const PORT = process.env.PORT || 8080;
     app.listen(PORT, (err) => {
         if (err) console.error(err);
